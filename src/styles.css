@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@theme{
+    --font-primary      : "Faculty Glyphic", sans-serif;
+    --font-secondary    : "Chicle", serif;
+    
+    --color-d1 : #266DD3;
+    --color-d2 : #BA5A31;
+    --color-d3 : #0C0C0C;
+    --color-d4 : #C3BABA;
+    --color-d5 : #EEF0F2;
+
+}

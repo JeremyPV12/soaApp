@@ -1,0 +1,39 @@
+<div class="w-full h-screen bg-white">
+    <div class="w-full h-[10%] border-b-4  border-d1 flex items-center px-10" style="border-image: linear-gradient(to right, red, blue) 1;">
+        <h2 class="text-d1 text-5xl font-secondary tracking-wide" >TicketFácil</h2>
+    </div>
+    <div class="bg-white w-full grid grid-cols-2">
+        <div class="flex justify-center items-center">
+            <form [formGroup]="myForm" (submit)="login()" class="font-primary space-y-8" >
+                <div class="flex flex-col space-y-4">
+                    <label for="email" class="text-lg font-semibold text-d1" >Email</label>
+                    <input formControlName="email" id="email" type="text" 
+                    placeholder="Ingresa tu email" class="outline-none border-2 w-96 px-3 py-2 rounded-lg border-d4" >
+                    <span *ngIf="isValidField('email')" class="text-dashboard-5 font-primary font-medium text-sm" >
+                        {{getFieldError('email')}}
+                    </span>
+                </div>
+                
+                 <div class="flex flex-col space-y-4">
+                    <label for="password" class="text-lg font-semibold text-d1" >Contraseña</label>
+                    <input formControlName="password" id="password" type="password" 
+                    placeholder="Ingresa tu contraseña" class="outline-none border-2 w-96 px-3 py-2 rounded-lg border-d4" >
+                    <span *ngIf="isValidField('password')" class="text-dashboard-5 font-primary font-medium text-sm" >
+                        {{getFieldError('password')}}
+                    </span>
+                </div>
+                
+                <button type="submit" class="border-2 border-d2 px-12 py-2 rounded-lg text-d2 font-semibold hover:bg-d2 hover:text-white cursor-pointer" >Iniciar Sesion</button>
+            </form>
+        </div>
+        <div class="w-full h-screen relative">
+            <img src="./assets/image/imageSoa.jpeg" alt="" class="h-full hover:animate-pulse">
+            <div 
+            class="hover:text-slate-200 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 tracking-wide  text-white font-semibold text-9xl font-secondary">TicketFácil</div>
+        </div>
+    </div>
+    <div class="h-[10%] bg-d3  font-secondary flex items-center px-10 space-x-10">
+        <h4 class="text-white text-6xl">TF</h4>
+        <h6 class="text-white font-primary text-sm">. Terminos y condiciones</h6>
+    </div>
+</div>
