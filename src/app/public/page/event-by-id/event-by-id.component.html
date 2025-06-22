@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="px-10 py-8 grid grid-cols-2 gap-10 font-primary" >
+    <article class="col-span-1 space-y-4" >
+        <section class="flex justify-between" >
+        <h4 class="text-xl text-d1 font-medium ">Nombre del evento :</h4>
+        <h5 class="text-lg font-semibold" >{{eventData['Name']}}</h5>
+        </section>
+        <section class="flex justify-between" >
+            <h4 class="text-xl text-d1 font-medium ">Descripcion :</h4>
+            <h5 class="text-lg font-semibold" >{{eventData['Description']}}</h5>
+        </section>
+        <section class="flex justify-between" >
+            <h4 class="text-xl text-d1 font-medium ">Ubicacion :</h4>
+            <h5 class="text-lg font-semibold" >{{eventData['Location']}}</h5>
+        </section>
+        <section class="flex justify-between" >
+            <h4 class="text-xl text-d1 font-medium ">Fecha :</h4>
+            <h5 class="text-lg font-semibold" >{{eventData['Date']}}</h5>
+        </section>
+    </article>
+</div>

@@ -1,26 +1,19 @@
-<div class="w-full" >
-    <div class="bg-gradient-to-r from-d1 via-d2 to-d4 h-10 flex items-center">
-        <h1 class="px-10 text-white font-primary text-lg underline hover:text-d3 cursor-pointer" >Inicio</h1>
-    </div>
-    <div class="flex justify-between py-5 px-10">
-        <section>
-            <h2 class="text-d1 text-5xl font-secondary tracking-wide" >TicketFácil</h2>
-        </section>
-        <section class="flex space-x-8">
-            <div class="flex items-center space-x-3" routerLink="/login"  >
-                <i class="fa-solid fa-user text-d1 fa-xl"></i>
-                <h4 class="text-d4 font-semibold text-xl" >Iniciar Sesion</h4>
-            </div>
-            <div class="flex items-center space-x-3" routerLink="/register" >
-                <i class="fa-solid fa-right-to-bracket text-d1 fa-xl"></i>
-                <h4 class="text-d4 font-semibold text-xl" >Registrar</h4>
-            </div>
-        </section>
-    </div>
-</div>
-<div class="w-full h-[25rem] bg-d3">
-    slider de 
-</div>
-<div class="">
-
+<app-header></app-header>
+<div class="px-10 py-5 space-y-6 font-primary">
+    <h3 class="text-4xl font-semibold text-d2" >Eventos</h3>
+    <ul class="grid grid-cols-3 gap-x-8 gap-y-5" >
+        @for (item of EventData; track $index) {
+            <li class="border rounded-xl px-5 py-3 border-d1 space-y-4">
+                <img [src]="item['ImageUrl']" alt="" class="h-26 bg-amber-100" >
+                <div class="space-y-2">
+                    <h4 class="text-lg font-semibold text-d1">{{item['Name']}}</h4>
+                    <p class="text-lg text-d2 font-medium" >Description : <span class="text-d3">{{item['Description']}}</span></p>
+                    <p class="text-lg text-d2 font-medium" >Lugar : <span class="text-d3">{{item['Location']}}</span></p>
+                </div>
+                <button 
+                [routerLink]="['/event',item['Id']]" routerLinkActive="router-link-active" 
+                class="bg-d1 rounded-lg px-4 py-2 text-white cursor-pointer hover:text-d4" >Reservar boleto</button>
+            </li>
+        }
+    </ul>
 </div>

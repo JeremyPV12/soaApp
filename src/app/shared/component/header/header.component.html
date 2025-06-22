@@ -1,0 +1,35 @@
+<div class="w-full border-b-4" >
+    <div class="bg-gradient-to-r from-d1 via-d2 to-d4 h-10 flex items-center">
+        <h1 
+        routerLink="/"
+        class="px-10 text-white font-primary text-lg underline hover:text-d3 cursor-pointer" >Inicio</h1>
+        <h1 
+        routerLink="/"
+        class="px-10 text-white font-primary text-lg underline hover:text-d3 cursor-pointer" >Mis boletos</h1>
+    </div>
+    <div class="flex justify-between py-5 px-10">
+        <section>
+            <h2 class="text-d1 text-5xl font-secondary tracking-wide" >TicketFácil</h2>
+        </section>
+        @if (state == false) {
+            <div 
+            (click)="logOut()"
+            class="flex items-center space-x-3 cursor-pointer"  >
+                <i class="fa-solid fa-right-from-bracket text-d1 fa-xl"></i>
+                <h4 class="text-d4 font-semibold text-xl" >Cerrar Sesion</h4>
+            </div>
+        }@else {
+            <section class="flex space-x-8">
+            <div class="flex items-center space-x-3 cursor-pointer" routerLink="/login"  >
+                <i class="fa-solid fa-user text-d1 fa-xl"></i>
+                <h4 class="text-d4 font-semibold text-xl" >Iniciar Sesion</h4>
+            </div>
+            <div class="flex items-center space-x-3 cursor-pointer" routerLink="/register" >
+                <i class="fa-solid fa-right-to-bracket text-d1 fa-xl"></i>
+                <h4 class="text-d4 font-semibold text-xl" >Registrar</h4>
+            </div>
+        </section>
+        }
+        
+    </div>
+</div>

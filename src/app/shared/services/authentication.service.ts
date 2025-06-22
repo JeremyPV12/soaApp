@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { XMLParser } from 'fast-xml-parser';
-import { Login, Register } from '../interface/login.interface';
-import { map } from 'rxjs';
+import { Login, LoginResponse, Register } from '../interface/login.interface';
+import { BehaviorSubject, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,23 @@ export class AuthenticationService {
 
   private url = 'http://localhost:5003/CustomerAuthService.svc'
 
-  constructor(private http : HttpClient) { }
+  private profile ?: LoginResponse
+  private profileSubject = new BehaviorSubject<LoginResponse|null>(null)
+
+  constructor(private http : HttpClient) 
+  {
+    const profileData = localStorage.getItem('profile');
+    if (profileData) {
+      this.profile = JSON.parse(profileData);
+    }
+  }
+
+  get profileData (){
+    if (this.profile == undefined) {
+      return undefined;
+    }
+    return {...this.profile}
+  }
   
   getData(data : Login){
     const headers = new HttpHeaders({
@@ -39,7 +55,8 @@ export class AuthenticationService {
         const parser = new XMLParser();
         const json = parser.parse(x)
         return json
-      })
+      }),
+      tap((x) => this.processLogin(x['s:Envelope']['s:Body']['LoginResponse']['LoginResult']))
     )
   }
 
@@ -76,6 +93,18 @@ export class AuthenticationService {
         return json
       })
     )
+  }
+
+
+  private processLogin(data : LoginResponse){
+    this.profileSubject.next(data);
+    localStorage.setItem('profile',JSON.stringify(data))
+  }
+
+  logOut():void{
+    this.profile = undefined;
+    localStorage.removeItem('profile')
+    this.profileSubject.next(null);
   }
 
 

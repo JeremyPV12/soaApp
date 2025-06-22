@@ -10,3 +10,11 @@ export interface Register {
     phone : string,
     password : string
 }
+
+export interface LoginResponse {
+    Id : number,
+    Email : string,
+    FistName : string,
+    LastName : string,
+    Token : string
+}

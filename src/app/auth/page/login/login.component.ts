@@ -3,12 +3,12 @@ import { AuthenticationService } from '../../../shared/services/authentication.s
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidateService } from '../../../shared/services/validate.service';
 import { NgIf } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule,NgIf,RouterLink],
   templateUrl: './login.component.html',
   styles: ``
 })

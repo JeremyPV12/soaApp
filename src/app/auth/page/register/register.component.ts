@@ -4,11 +4,11 @@ import { AuthenticationService } from '../../../shared/services/authentication.s
 import { ValidateService } from '../../../shared/services/validate.service';
 import { NgIf } from '@angular/common';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule,NgIf,RouterLink],
   templateUrl: './register.component.html',
   styles: ``
 })
