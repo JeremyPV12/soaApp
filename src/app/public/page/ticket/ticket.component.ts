@@ -3,10 +3,11 @@ import { HeaderComponent } from "../../../shared/component/header/header.compone
 import { OrderResponse } from '../../../shared/interface/order.interface';
 import { OrderService } from '../../../shared/services/order.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-ticket',
-  imports: [HeaderComponent],
+  imports: [HeaderComponent,NgClass],
   templateUrl: './ticket.component.html',
   styles: ``
 })
@@ -37,7 +38,7 @@ export class TicketComponent implements OnInit {
       next: (data) => {
         this.orderData = data['s:Envelope']['s:Body']['GetByCustomerIdResponse']['GetByCustomerIdResult']['OrderResponse']
       },error : (err) => {
-        
+
       }
     })
   }

@@ -3,7 +3,18 @@
     <h3 class="text-2xl font-semibold text-d1" >Mis boletos comprados</h3>
     <div class="grid grid-cols-3 gap-10" >
         @for (item of orderData; track $index) {
-            <div class="border border-d2 px-3 py-2 rounded-lg space-y-4">
+            <div 
+            [ngClass]="
+            {
+                'bg-d4': item.Status == 'finalized',
+                'bg-d1' : item.Status == 'canceled',
+            }"
+            class="border px-3 py-2 rounded-lg space-y-4">
+                @if (item.Status == 'finalized') {
+                    <h3 class="text-black font-semibold text-lg" >Compra finalizada </h3>
+                }@else {
+                    <h3 class="text-black font-semibold text-lg" >Compra cancelada </h3>
+                }
                 <section class="flex justify-between" >
                     <h4 class="text-lg text-d1 font-semibold">Fecha de la operaciòn :</h4>
                     <h5 class="text-lg text-d3">{{item.OrderDate}}</h5>
