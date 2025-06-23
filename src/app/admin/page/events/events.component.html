@@ -1,0 +1,140 @@
+<div class="container mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Gestión de Eventos</h2>
+    <button
+      (click)="showCreateModal()"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+    >
+      Crear Nuevo Evento
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center py-8">
+    <p>Cargando eventos...</p>
+  </div>
+
+  <div *ngIf="!isLoading && events.length === 0" class="text-center py-8">
+    <p>No hay eventos disponibles</p>
+  </div>
+
+  <div
+    *ngIf="!isLoading && events.length > 0"
+    class="bg-white shadow rounded-lg overflow-hidden"
+  >
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Título
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Fecha
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Ubicación
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Estado
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let event of events">
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ event.Name }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ event.Date | date : "mediumDate" }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ event.Location }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span
+              class="px-2 py-1 text-xs rounded-full ${event.Status === 'active' ? 'bg-green-100 text-green-800' : event.Status === 'canceled' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'}"
+            >
+              {{ getStatusText(event.Status) }}
+            </span>
+          </td>
+
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button
+              (click)="showEventDetails(event.Id)"
+              class="text-blue-500 hover:text-blue-700 mr-4"
+            >
+              Ver
+            </button>
+
+            <button
+              (click)="confirmCancelEvent(event.Id)"
+              *ngIf="event.Status !== 'canceled'"
+              class="text-yellow-600 hover:text-yellow-800 mr-2"
+            >
+              Cancelar
+            </button>
+
+            <button
+              (click)="showEditModal(event)"
+              class="text-green-500 hover:text-green-700 mr-4"
+            >
+              Editar
+            </button>
+            <button
+              (click)="deleteEvent(event.Id)"
+              class="text-red-500 hover:text-red-700"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-sm text-gray-700">
+            Mostrando
+            <span class="font-medium">{{
+              (currentPage - 1) * pageSize + 1
+            }}</span>
+            a
+            <span class="font-medium">{{
+              Math.min(currentPage * pageSize, totalItems)
+            }}</span>
+            de <span class="font-medium">{{ totalItems }}</span> eventos
+          </p>
+        </div>
+        <div class="flex space-x-2">
+          <button
+            (click)="onPageChange(currentPage - 1)"
+            [disabled]="currentPage === 1"
+            class="px-3 py-1 border rounded bg-white disabled:opacity-50"
+          >
+            Anterior
+          </button>
+          <button
+            (click)="onPageChange(currentPage + 1)"
+            [disabled]="currentPage * pageSize >= totalItems"
+            class="px-3 py-1 border rounded bg-white disabled:opacity-50"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
