@@ -98,7 +98,7 @@ export class EventByIdComponent implements OnInit {
       
     const newData : Order = {...this.myForm.value}
     newData.customerID = this.receiveData.Id;
-
+    
     this.order.addOrder(newData).subscribe({
       next: () => {
         this.router.navigateByUrl('/');
@@ -110,7 +110,6 @@ export class EventByIdComponent implements OnInit {
         })
       },error: () => {
         this.myForm.reset();
-
         Swal.fire({
           title : 'Error en la compra!',
           text  : 'Ocurrio un error en la compra',

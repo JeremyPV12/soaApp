@@ -17,7 +17,7 @@
                 }
                 <section class="flex justify-between" >
                     <h4 class="text-lg text-d1 font-semibold">Fecha de la operaciòn :</h4>
-                    <h5 class="text-lg text-d3">{{item.OrderDate}}</h5>
+                    <h5 class="text-lg text-d3">{{item.OrderDate | date:'short' }} </h5>
                 </section>
                 <section class="flex justify-between" >
                     <h4 class="text-lg text-d1 font-semibold">Metodo de pago :</h4>

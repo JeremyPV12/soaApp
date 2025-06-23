@@ -3,11 +3,11 @@ import { HeaderComponent } from "../../../shared/component/header/header.compone
 import { OrderResponse } from '../../../shared/interface/order.interface';
 import { OrderService } from '../../../shared/services/order.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-ticket',
-  imports: [HeaderComponent,NgClass],
+  imports: [HeaderComponent,NgClass,DatePipe],
   templateUrl: './ticket.component.html',
   styles: ``
 })
