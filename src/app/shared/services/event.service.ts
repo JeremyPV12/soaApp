@@ -59,6 +59,7 @@ export class EventService {
           </tns:GetById>
         </soapenv:Body>
       </soapenv:Envelope>`;
+      
     return this.http.post(this.url, xmlBody, {
           headers,
           responseType: 'text' 

@@ -3,6 +3,7 @@ import { LoginComponent } from './auth/page/login/login.component';
 import { RegisterComponent } from './auth/page/register/register.component';
 import { HomeComponent } from './public/page/home/home.component';
 import { EventByIdComponent } from './public/page/event-by-id/event-by-id.component';
+import { TicketComponent } from './public/page/ticket/ticket.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,10 @@ export const routes: Routes = [
     {
         path: 'register',
         component : RegisterComponent
+    },
+    {
+        path: 'ticket',
+        component: TicketComponent
     },
     {
         path: 'event/:id',

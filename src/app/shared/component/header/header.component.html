@@ -4,12 +4,14 @@
         routerLink="/"
         class="px-10 text-white font-primary text-lg underline hover:text-d3 cursor-pointer" >Inicio</h1>
         <h1 
-        routerLink="/"
+        routerLink="/ticket"
         class="px-10 text-white font-primary text-lg underline hover:text-d3 cursor-pointer" >Mis boletos</h1>
     </div>
     <div class="flex justify-between py-5 px-10">
         <section>
-            <h2 class="text-d1 text-5xl font-secondary tracking-wide" >TicketFácil</h2>
+            <h2 
+            routerLink="/"
+            class="text-d1 text-5xl font-secondary tracking-wide cursor-pointer" >TicketFácil</h2>
         </section>
         @if (state == false) {
             <div 
@@ -30,6 +32,5 @@
             </div>
         </section>
         }
-        
     </div>
 </div>

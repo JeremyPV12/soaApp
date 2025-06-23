@@ -21,11 +21,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.receiveData
-    setTimeout(() => {
-      if (this.receiveData) {
-        this.state = false
-      }
-    }, 1000);
+    if (!this.receiveData) return;
+    this.state = false;
   }
 
   get receiveData(){

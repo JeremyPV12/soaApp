@@ -1,6 +1,7 @@
 <app-header></app-header>
 <div class="px-10 py-8 grid grid-cols-2 gap-10 font-primary" >
-    <article class="col-span-1 space-y-4" >
+    @if (eventData) {
+        <article class="col-span-1 space-y-4" >
         <section class="flex justify-between" >
         <h4 class="text-xl text-d1 font-medium ">Nombre del evento :</h4>
         <h5 class="text-lg font-semibold" >{{eventData['Name']}}</h5>
@@ -17,5 +18,44 @@
             <h4 class="text-xl text-d1 font-medium ">Fecha :</h4>
             <h5 class="text-lg font-semibold" >{{eventData['Date']}}</h5>
         </section>
+    </article>
+    }
+
+    <article class="" >
+        <form [formGroup]="myForm" (submit)="sendData()" class="font-primary flex flex-col space-y-4">
+            <div class="flex flex-col space-y-4">
+              <label for="PaymentMethod" class="text-d1 font-semibold text-lg">Método de Pago</label>
+              <select id="PaymentMethod" formControlName="PaymentMethod" class="border-2 border-d4 rounded-lg px-4 py-2 bg-d5">
+                <option value="" hidden>Seleccionar método de pago</option>
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Yape">Yape</option>
+                <option value="Transferencia">Transferencia</option>
+              </select>
+            </div>
+
+            <div formArrayName="Items" class="mt-4 space-y-4">
+                <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="border p-4 rounded-md space-y-4">
+                <div class="flex justify-between" >
+                    <label for="ticketType-{{i}}">Tipo de ticket</label>
+                    <select id="ticketType-{{i}}" formControlName="ticketType" class="border px-2 py-1 rounded">
+                    <option value="" disabled selected>Selecciona un tipo</option>
+                    @for (item of ticketTypeResponse; track $index) {
+                        <option [value]="item.Id">{{item.Name}}</option>
+                    }
+                    </select>
+                </div>
+
+                <div class="flex justify-between" >
+                    <label for="quantity-{{i}}">Cantidad</label>
+                    <input id="quantity-{{i}}" type="number" formControlName="Quantity" class="border px-2 py-1 rounded" />
+                </div>
+
+                <button type="button" (click)="removeItem(i)" class="mt-2 text-red-600">Eliminar</button>
+                </div>
+            </div>
+
+            <button type="button" (click)="addItem()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">Agregar nuevo tipo entrada</button>
+            <button type="submit" (click)="sendData()" class="bg-d2 py-2  rounded-lg text-lg text-white cursor-pointer hover:text-d4" >Comprar boletas</button>
+        </form>
     </article>
 </div>
