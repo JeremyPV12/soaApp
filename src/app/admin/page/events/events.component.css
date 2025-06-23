@@ -1,0 +1,51 @@
+.event-create-modal {
+  max-width: 800px;
+  width: 90%;
+}
+
+.event-create-modal .swal2-input,
+.event-create-modal .swal2-textarea {
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.event-create-modal .swal2-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.event-edit-modal {
+  max-width: 800px;
+  width: 90%;
+}
+
+.event-edit-modal .swal2-input,
+.event-edit-modal .swal2-textarea,
+.event-edit-modal .swal2-select {
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.event-edit-modal .swal2-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.delete-confirm-modal {
+  max-width: 500px;
+}
+
+.delete-confirm-modal .swal2-title {
+  font-size: 1.5rem;
+}
+
+.delete-confirm-modal .swal2-content {
+  font-size: 1.1rem;
+}
+
+.delete-confirm-modal .swal2-confirm {
+  background-color: #ef4444 !important;
+}
+
+.delete-confirm-modal .swal2-cancel {
+  background-color: #3b82f6 !important;
+}
